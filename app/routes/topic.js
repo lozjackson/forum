@@ -1,7 +1,11 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
-  model() {
-    return this.store.findAll('topic');
+const { Route } = Ember;
+
+export default Route.extend({
+  breadCrumb: {},
+  afterModel(model) {
+    this._super(...arguments);
+    this.set('breadCrumb', { title: model.get('title') });
   }
 });

@@ -1,0 +1,10 @@
+{{uic-button text="New Topic" action=(action transitionToRoute "new-topic")}}
+
+<ul class="topic-list">
+  {{#each model as |topic|}}
+    <li {{action transitionToRoute "topic" topic}} class="topic">
+      <h2>{{topic.title}}</h2>
+    </li>
+  {{/each}}
+</ul>
+{{outlet}}
