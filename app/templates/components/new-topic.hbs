@@ -1,0 +1,9 @@
+{{uic-form-element value=model.title}}
+{{#uic-form-element}}
+  {{textarea value=model.body}}
+{{/uic-form-element}}
+
+{{#uic-button-group}}
+  {{uic-button text="Cancel" action=(action cancel)}}
+  {{uic-button text="Post" action=(action submit model) class="blue"}}
+{{/uic-button-group}}
