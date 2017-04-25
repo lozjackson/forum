@@ -9,7 +9,18 @@ html {
 }
 .location ol li {
 	list-style: none;
+	display: inline-block;
 }
+
+svg.button {
+	cursor: pointer;
+	fill: #a4abad;
+	transition: fill 0.3s;
+}
+svg.button:hover {
+	fill: #10b4ef;
+}
+
 ul.topic-list {
   padding: 5px;
 }
