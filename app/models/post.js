@@ -1,4 +1,4 @@
-import Model from 'ember-data';
+import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { belongsTo } from 'ember-data/relationships';
 
@@ -6,7 +6,6 @@ export default Model.extend({
   created: 	attr('string', { defaultValue: function () {
     return new Date().toISOString();
   }}),
-
   modified: attr('string', { defaultValue: function () {
     return new Date().toISOString();
   }}),
