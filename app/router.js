@@ -8,6 +8,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('topic');
+  this.route('new-topic');
 });
 
 export default Router;
