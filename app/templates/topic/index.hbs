@@ -2,7 +2,8 @@
   {{button-edit click=(action edit)}}
 {{/if}}
 <h2>{{model.title}}</h2>
-<p>Posted: {{moment-format model.created "L h:mm a"}}</p>
+<p>Posted By: {{model.author.name}}</p>
+<p>{{moment-format model.created "L h:mm a"}}</p>
 <p>Replies: {{model.posts.length}}</p>
 <p>{{model.body}}</p>
 
