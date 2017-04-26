@@ -12,10 +12,12 @@ html {
 	display: inline-block;
 }
 
-.login-form input {
+.login-form input,
+.register-user input {
 	display: block;
 }
-button.login-button {
+button.login-button,
+.register-button-group {
 	margin: auto;
 	margin-top: 10px;
 	margin-bottom: 20px;
