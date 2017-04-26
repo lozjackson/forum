@@ -9,6 +9,7 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('topic', { path: '/:topic_id' }, function() {
     this.route('edit');
+    this.route('new-post');
   });
   this.route('new-topic');
 });
