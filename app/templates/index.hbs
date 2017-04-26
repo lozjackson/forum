@@ -1,7 +1,9 @@
 {{uic-button text="New Topic" action=(action transitionToRoute "new-topic")}}
 
+{{search-bar value=search}}
+
 <ul class="topic-list">
-  {{#each model as |topic|}}
+  {{#each sortedTopics as |topic|}}
     <li {{action transitionToRoute "topic" topic}} class="topic">
       <h2>{{topic.title}}</h2>
       <p>Posted By: {{topic.author.name}}</p>
@@ -12,4 +14,5 @@
     <li {{action transitionToRoute "new-topic"}}><h2>No topics!</h2></li>
   {{/each}}
 </ul>
+
 {{outlet}}
