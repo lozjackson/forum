@@ -1,0 +1,8 @@
+<h2>{{model.topic.title}}</h2>
+
+{{content-editable value=model.body tagName="p" class="topic-body"}}
+
+{{#uic-button-group}}
+  {{uic-button text="Cancel" action=(action cancel)}}
+  {{uic-button text="Post" action=(action submit model) class="blue"}}
+{{/uic-button-group}}
