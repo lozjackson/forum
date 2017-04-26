@@ -14,7 +14,11 @@ export default Controller.extend({
   },
 
   cancel() {
-    this.get('changeset').rollback();
+    let { changeset, model } = this.getProperties('changeset', 'model');
+    changeset.rollback();
+    if (model.get('isNew')) {
+      model.deleteRecord();
+    }
     window.history.back();
   }
 });

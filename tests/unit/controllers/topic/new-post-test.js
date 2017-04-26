@@ -1,14 +1,11 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
 
-const { typeOf } = Ember;
-
-moduleFor('controller:new-topic', 'Unit | Controller | new topic', {
-  // needs: ['controller:foo'],
-  // beforeEach: function () {
-  //   this.inject.service('store', { as: 'store' });
-  // }
+moduleFor('controller:topic/new-post', 'Unit | Controller | topic/new post', {
+  // needs: ['controller:foo']
 });
+
+const { typeOf } = Ember;
 
 test('it exists', function(assert) {
   let controller = this.subject();
@@ -25,7 +22,7 @@ test('changeset', function(assert) {
 test('submit', function(assert) {
   assert.expect(2);
   let controller = this.subject({
-    transitionToRoute: (routeName) => assert.equal(routeName, 'index')
+    transitionToRoute: (routeName) => assert.equal(routeName, 'topic.index')
   });
 
   let changeset = Ember.Object.create({
