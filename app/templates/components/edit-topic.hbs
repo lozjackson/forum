@@ -1,0 +1,9 @@
+{{uic-input value=model.title class="topic-title"}}
+{{content-editable value=model.body tagName="p" class="topic-body"}}
+
+{{#uic-button-group}}
+  {{uic-button text="Cancel" action=(action cancel) disabled=(unless model.changes.length true)}}
+  {{uic-button text="Save" action=(action submit model) disabled=(unless model.changes.length true) class="blue"}}
+{{/uic-button-group}}
+
+{{yield}}
