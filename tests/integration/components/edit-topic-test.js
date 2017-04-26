@@ -7,19 +7,16 @@ moduleForComponent('edit-topic', 'Integration | Component | edit topic', {
 
 test('it renders', function(assert) {
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.setProperties({
+    model: { body: '' },
+    submit() {},
+    cancel() {}
+  })
 
-  this.render(hbs`{{edit-topic}}`);
+  this.render(hbs`{{edit-topic model=model submit=(action submit) cancel=(action cancel)}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#edit-topic}}
-      template block text
-    {{/edit-topic}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('.edit-topic').length, 1);
+  assert.equal(this.$('.edit-topic input').length, 1);
+  assert.equal(this.$('.edit-topic p').length, 1);
+  assert.equal(this.$('.edit-topic button').length, 2);
 });

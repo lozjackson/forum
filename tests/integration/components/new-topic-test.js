@@ -8,14 +8,15 @@ moduleForComponent('new-topic', 'Integration | Component | new topic', {
 test('it renders', function(assert) {
 
   this.setProperties({
+    model: { body: '' },
     submit() {},
     cancel() {}
   })
 
-  this.render(hbs`{{new-topic submit=(action submit) cancel=(action cancel)}}`);
+  this.render(hbs`{{new-topic model=model submit=(action submit) cancel=(action cancel)}}`);
 
   assert.equal(this.$('.new-topic').length, 1);
   assert.equal(this.$('.new-topic input').length, 1);
-  assert.equal(this.$('.new-topic textarea').length, 1);
+  assert.equal(this.$('.new-topic p').length, 1);
   assert.equal(this.$('.new-topic button').length, 2);
 });
