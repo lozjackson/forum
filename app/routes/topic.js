@@ -1,11 +1,9 @@
 import Ember from 'ember';
 
-const { Route } = Ember;
+const { computed, Route } = Ember;
 
 export default Route.extend({
-  breadCrumb: {},
-  afterModel(model) {
-    this._super(...arguments);
-    this.set('breadCrumb', { title: model.get('title') });
-  }
+  breadCrumb: computed('controller.model.title', function () {
+    return { title: this.controller.get('model.title') || 'Untitled' }
+  })
 });
