@@ -5,7 +5,10 @@
     {{/if}}
     {{uic-button text="Logout" action="logout" class="small logout-button"}}
   {{else}}
-    {{link-to "Login" "login" tagName="button" class="uic-button small login-button"}}
+    {{#uic-button-group class="small"}}
+      {{link-to "Login" "login" tagName="button" class="uic-button"}}
+      {{link-to "Register" "register" tagName="button" class="uic-button"}}
+    {{/uic-button-group}}
   {{/if}}
 </div>
 
