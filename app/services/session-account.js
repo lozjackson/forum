@@ -12,7 +12,7 @@ export default Ember.Service.extend({
     return new Promise((resolve, reject) => {
       const accountId = this.get('session.data.authenticated.userId');
       if (!isEmpty(accountId)) {
-        return this.get('store').findRecord('user', accountId, { include: 'config' }).then(account => {
+        return this.get('store').findRecord('user', accountId).then(account => {
           this.set('user', account);
           resolve();
         }, reject);
