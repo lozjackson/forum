@@ -1,15 +1,25 @@
 html {
 	background: #FBFBFB;
-	color: #000;
+	/*color: #000;*/
 	font-family: sans-serif;
 	font-size: 16px;
 	font-weight: 300;
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
+	color: #5878a2;
 }
 .location ol li {
 	list-style: none;
 	display: inline-block;
+}
+body {
+	margin: 10px;
+	max-width: 1000px;
+}
+@media (min-width:1020px) {
+	body {
+		margin: auto;
+	}
 }
 
 .login-form input,
@@ -22,25 +32,51 @@ button.login-button,
 	margin-top: 10px;
 	margin-bottom: 20px;
 }
-
+.search-bar > input{
+	width: 200px;
+	background: #f5faff;
+	float: right;
+	transition: width 0.3s, background 0.3s;
+}
+.search-bar > input:focus {
+	width: 250px;
+	background: #fff;
+}
 svg.button {
 	cursor: pointer;
 	fill: #a4abad;
 	transition: fill 0.3s;
+	margin: 10px;
 }
 svg.button:hover {
 	fill: #10b4ef;
 }
 
 ul.topic-list {
-  padding: 5px;
+  padding: 0;
 }
 ul.topic-list li {
+	margin: 0;
+	padding: 12px;
   cursor: pointer;
   list-style: none;
+	border-bottom: 1px solid #ececec;
+}
+ul.topic-list li h2,
+ul.topic-list li p {
+	margin: 0 12px;
+}
+ul.topic-list li h2 {
+	font-size: 1rem;
+}
+ul.topic-list li p {
+	font-size: 0.8rem;
+	display: inline-block;
+	/*margin: 12px 0;*/
 }
 input.topic-title,
-p.topic-body {
+p.topic-body,
+p.post-body {
 	border: none;
 	box-shadow: none;
 	border-bottom: 2px solid #c7d2d6;
@@ -57,4 +93,11 @@ p.topic-body:focus {
 	box-shadow: none;
 	border-bottom: 2px solid #00b8ff;
 	outline: none;
+}
+
+.post p.post-body {
+	background: #fff;
+	border-radius: 4px;
+	min-height: 100px;
+	padding: 12px;
 }
