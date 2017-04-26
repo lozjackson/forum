@@ -12,6 +12,7 @@ Router.map(function() {
     this.route('new-post');
   });
   this.route('new-topic');
+  this.route('login');
 });
 
 export default Router;
