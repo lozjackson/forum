@@ -1,5 +1,6 @@
-{{button-edit click=(action edit)}}
-
+{{#if canEditTopic}}
+  {{button-edit click=(action edit)}}
+{{/if}}
 <h2>{{model.title}}</h2>
 <p>Posted: {{moment-format model.created "L h:mm a"}}</p>
 <p>Replies: {{model.posts.length}}</p>

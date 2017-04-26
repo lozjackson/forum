@@ -7,6 +7,8 @@
       <p>Posted: {{moment-format topic.created "L h:mm a"}}</p>
       <p>Replies: {{topic.posts.length}}</p>
     </li>
+  {{else}}
+    <li {{action transitionToRoute "new-topic"}}><h2>No topics!</h2></li>
   {{/each}}
 </ul>
 {{outlet}}
