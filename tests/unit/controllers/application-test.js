@@ -1,12 +1,12 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('controller:topic/index', 'Unit | Controller | topic/index', {
+moduleFor('controller:application', 'Unit | Controller | application', {
   needs: [
+    'service:session',
     'service:session-account'
   ]
 });
 
-// Replace this with your real tests.
 test('it exists', function(assert) {
   let controller = this.subject();
   assert.ok(controller);
