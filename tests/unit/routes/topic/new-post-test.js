@@ -2,7 +2,8 @@ import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('route:topic/new-post', 'Unit | Route | topic/new post', {
   needs: [
-    'service:session'
+    'service:session',
+    'service:session-account'
   ]
 });
 
