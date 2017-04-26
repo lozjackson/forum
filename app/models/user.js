@@ -7,6 +7,8 @@ const { computed: { readOnly } } = Ember;
 
 export default Model.extend({
   username: attr('string'),
+  email: attr('string'),
+
   topics: hasMany('topic', { async: true }),
   posts: hasMany('post', { async: true }),
 
