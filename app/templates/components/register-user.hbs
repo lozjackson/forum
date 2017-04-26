@@ -1,1 +1,11 @@
-{{yield}}
+<form {{action register on='submit'}} name="registration-form">
+  {{uic-input value=model.username placeholder="Username"}}
+  {{uic-input value=model.email placeholder="Email"}}
+  {{uic-input value=model.password placeholder="Password" type="password"}}
+  {{uic-input value=model.passwordConfirmation placeholder="Confirm Password" type="password"}}
+
+  {{#uic-button-group class="register-button-group"}}
+    {{uic-button text="Cancel" action=(action cancel) class="cancel-button large"}}
+    {{uic-button text="Register" type="submit" disabled=model.isInvalid class="register-button large blue"}}
+  {{/uic-button-group}}
+</form>

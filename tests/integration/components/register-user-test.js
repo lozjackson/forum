@@ -7,18 +7,16 @@ moduleForComponent('register-user', 'Integration | Component | register user', {
 
 test('it renders', function(assert) {
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  this.setProperties({
+    register() {},
+    cancel() {}
+  });
+  this.render(hbs`{{register-user register register=(action register) cancel=(action cancel)}}`);
 
-  this.render(hbs`{{register-user}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  this.render(hbs`
-    {{#register-user}}
-      template block text
-    {{/register-user}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$('.register-user').length, 1);
+  assert.equal(this.$('form').length, 1);
+  assert.equal(this.$('form input[type=text]').length, 2);
+  assert.equal(this.$('form input[type=password]').length, 2);
+  assert.equal(this.$('form button.register-button').length, 1);
+  assert.equal(this.$('form button.cancel-button').length, 1);
 });
