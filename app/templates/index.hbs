@@ -4,6 +4,8 @@
   {{#each model as |topic|}}
     <li {{action transitionToRoute "topic" topic}} class="topic">
       <h2>{{topic.title}}</h2>
+      <p>Posted: {{moment-format topic.created "L h:mm a"}}</p>
+      <p>Replies: {{topic.posts.length}}</p>
     </li>
   {{/each}}
 </ul>

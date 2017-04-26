@@ -1,7 +1,14 @@
 {{button-edit click=(action edit)}}
 
 <h2>{{model.title}}</h2>
+<p>Posted: {{moment-format model.created "L h:mm a"}}</p>
+<p>Replies: {{model.posts.length}}</p>
 <p>{{model.body}}</p>
+
+{{#each model.posts as |post|}}
+  <p>Posted: {{moment-format post.created "L h:mm a"}}</p>
+  <p>{{post.body}}</p>
+{{/each}}
 
 {{uic-button text="Reply" action=(action transitionToRoute "topic.new-post")}}
 
