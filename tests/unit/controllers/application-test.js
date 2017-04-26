@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:topic/new-post', 'Unit | Route | topic/new post', {
+moduleFor('controller:application', 'Unit | Controller | application', {
   needs: [
     'service:session',
     'service:session-account'
@@ -8,6 +8,6 @@ moduleFor('route:topic/new-post', 'Unit | Route | topic/new post', {
 });
 
 test('it exists', function(assert) {
-  let route = this.subject();
-  assert.ok(route);
+  let controller = this.subject();
+  assert.ok(controller);
 });

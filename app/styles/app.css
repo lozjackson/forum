@@ -12,6 +12,15 @@ html {
 	display: inline-block;
 }
 
+.login-form input {
+	display: block;
+}
+button.login-button {
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
 svg.button {
 	cursor: pointer;
 	fill: #a4abad;
@@ -24,7 +33,7 @@ svg.button:hover {
 ul.topic-list {
   padding: 5px;
 }
-ul.topic-list li.topic {
+ul.topic-list li {
   cursor: pointer;
   list-style: none;
 }

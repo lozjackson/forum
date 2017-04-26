@@ -1,9 +1,7 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:topic/index', 'Unit | Route | topic/index', {
-  needs: [
-    // 'service:session-account'
-  ]
+moduleFor('route:login', 'Unit | Route | login', {
+  needs: ['service:session']
 });
 
 test('it exists', function(assert) {

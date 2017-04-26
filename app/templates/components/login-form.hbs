@@ -1,0 +1,13 @@
+<form {{action authenticate on='submit'}} name="login-form">
+  {{uic-input value=identification placeholder="Username"}}
+  {{uic-input value=password placeholder="Password" type="password"}}
+  {{uic-button text="Login" type="submit" class="login-button large"}}
+</form>
+{{#if errorMessage}}
+  <div class="alert alert-danger">
+    <p>
+      <strong>Login failed:</strong>
+      <code>{{errorMessage}}</code>
+    </p>
+  </div>
+{{/if}}

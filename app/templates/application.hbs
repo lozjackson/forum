@@ -1,4 +1,16 @@
-<h2>Forum</h2>
+<div class="login-status">
+  {{#if session.isAuthenticated}}
+    {{#if sessionAccount.user.username}}
+        {{sessionAccount.user.username}}
+    {{/if}}
+    {{uic-button text="Logout" action="logout" class="small logout-button"}}
+  {{else}}
+    {{link-to "Login" "login" tagName="button" class="uic-button small login-button"}}
+  {{/if}}
+</div>
+
+<h1>{{forumTitle}}</h1>
+
 {{link-to "Index" "index"}}
 <div class="location">{{bread-crumbs}}</div>
 
