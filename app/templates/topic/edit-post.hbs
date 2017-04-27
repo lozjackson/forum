@@ -1,0 +1,9 @@
+{{#if (can "edit post" model)}}
+  {{edit-post
+    model=changeset
+    submit=(action submit)
+    cancel=(action cancel)}}
+{{else}}
+  <p>You are not authorized to edit this post!</p>
+{{/if}}
+{{outlet}}
