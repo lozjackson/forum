@@ -20,6 +20,10 @@ export default Model.extend({
 
   postDates: mapBy('posts', 'created'),
 
+  edited: computed('created', 'modified', function () {
+    return this.get('modified') > this.get('created');
+  }),
+
   lastPost: computed('postDates', 'created', function () {
     const postDates = this.get('postDates');
     if (!postDates.get('length')) {
