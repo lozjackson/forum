@@ -1,5 +1,9 @@
-{{edit-topic
-  model=changeset
-  submit=(action submit)
-  cancel=(action cancel)}}
+{{#if (can "edit topic" model)}}
+  {{edit-topic
+    model=changeset
+    submit=(action submit)
+    cancel=(action cancel)}}
+{{else}}
+  <p>You are not authorized to edit this topic!</p>
+{{/if}}
 {{outlet}}
