@@ -1,15 +1,31 @@
-{{#if canEditTopic}}
+{{#if (can "edit topic" model)}}
   {{button-edit click=(action edit)}}
 {{/if}}
+
 <h2>{{model.title}}</h2>
-<p>Posted By: {{model.author.name}}</p>
-<p>{{moment-format model.created "L h:mm a"}}</p>
-<p>Replies: {{model.posts.length}}</p>
+
+<div class="topic-details">
+  <p>Posted By: {{model.author.name}}</p>
+  <p>{{moment-format model.created "L h:mm a"}}</p>
+  <p>Replies: {{model.posts.length}}</p>
+  {{#if model.edited}}
+    <p>Edited: {{moment-format model.modified "L h:mm a"}}</p>
+  {{/if}}
+</div>
 <p class="topic-body">{{model.body}}</p>
 
 {{#each model.posts as |post|}}
   <div class="post">
-    <p class="post-details">Posted: {{moment-format post.created "L h:mm a"}}</p>
+    <div class="post-details">
+      <p>Posted By: {{post.author.name}}</p>
+      <p>{{moment-format post.created "L h:mm a"}}</p>
+      {{#if (can "edit post" post)}}
+        {{button-edit size=24 click=(action editPost post)}}
+      {{/if}}
+      {{#if post.edited}}
+        <p>Edited: {{moment-format post.modified "L h:mm a"}}</p>
+      {{/if}}
+    </div>
     <p class="post-body">{{post.body}}</p>
   </div>
 {{/each}}
