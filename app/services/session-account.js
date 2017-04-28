@@ -1,12 +1,14 @@
 import Ember from 'ember';
 
-const { inject: { service }, isEmpty, RSVP: { Promise } } = Ember;
+const { computed: { readOnly }, inject: { service }, isEmpty, RSVP: { Promise } } = Ember;
 
 export default Ember.Service.extend({
 
   session: service(),
   store: service(),
   user: null,
+
+  isAdmin: readOnly('session.data.authenticated.admin'),
 
   loadCurrentUser() {
     return new Promise((resolve, reject) => {
