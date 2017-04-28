@@ -1,18 +1,12 @@
 import Ember from 'ember';
 
-const { computed, inject: { service }, Controller, RSVP: { Promise } } = Ember;
-
-export default Controller.extend({
-
-  sessionAccount: service(),
-
-  canEditTopic: computed('model.author', 'sessionAccount.user', function () {
-    return new Promise(resolve => {
-      this.get('model.author').then(author => resolve(author === this.get('sessionAccount.user')));
-    });
-  }),
+export default Ember.Controller.extend({
 
   edit() {
     this.transitionToRoute('topic.edit');
+  },
+
+  editPost(post) {
+    this.transitionToRoute('topic.edit-post', post);
   }
 });

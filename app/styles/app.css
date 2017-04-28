@@ -21,7 +21,9 @@ body {
 		margin: auto;
 	}
 }
-
+#forum-title {
+	cursor: pointer;
+}
 .login-form input,
 .register-user input {
 	display: block;
@@ -46,11 +48,13 @@ svg.button {
 	cursor: pointer;
 	fill: #a4abad;
 	transition: fill 0.3s;
-	margin: 10px;
 }
 svg.button:hover {
 	fill: #10b4ef;
 }
+
+
+/* Topics */
 
 ul.topic-list {
   padding: 0;
@@ -93,6 +97,13 @@ p.topic-body:focus {
 	box-shadow: none;
 	border-bottom: 2px solid #00b8ff;
 	outline: none;
+}
+.topic-details p,
+.post-details p {
+	display: inline-block;
+	margin: 0;
+	margin-right: 10px;
+	font-size: 0.75rem;
 }
 
 .post p.post-body {
