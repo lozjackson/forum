@@ -6,10 +6,10 @@
 
 <div class="topic-details">
   <p>Posted By: {{model.author.name}}</p>
-  <p>{{moment-format model.created "L h:mm a"}}</p>
+  <p>{{moment-format model.createdAt "DD/MM/YYYY h:mm a"}}</p>
   <p>Replies: {{model.posts.length}}</p>
   {{#if model.edited}}
-    <p>Edited: {{moment-format model.modified "L h:mm a"}}</p>
+    <p>Edited: {{moment-format model.modified "DD/MM/YYYY h:mm a"}}</p>
   {{/if}}
 </div>
 <p class="topic-body">{{model.body}}</p>
@@ -18,12 +18,12 @@
   <div class="post">
     <div class="post-details">
       <p>Posted By: {{post.author.name}}</p>
-      <p>{{moment-format post.created "L h:mm a"}}</p>
+      <p>{{moment-format post.createdAt "DD/MM/YYYY h:mm a"}}</p>
       {{#if (can "edit post" post)}}
         {{button-edit size=24 click=(action editPost post)}}
       {{/if}}
       {{#if post.edited}}
-        <p>Edited: {{moment-format post.modified "L h:mm a"}}</p>
+        <p>Edited: {{moment-format post.modified "DD/MM/YYYY h:mm a"}}</p>
       {{/if}}
     </div>
     <p class="post-body">{{post.body}}</p>

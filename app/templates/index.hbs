@@ -7,7 +7,7 @@
     <li {{action transitionToRoute "topic" topic}} class="topic">
       <h2>{{topic.title}}</h2>
       <p>Posted By: {{topic.author.name}}</p>
-      <p>{{moment-format topic.created "L h:mm a"}}</p>
+      <p>{{moment-format topic.createdAt "DD/MM/YYYY h:mm a"}}</p>
       <p>Replies: {{topic.posts.length}}</p>
     </li>
   {{else}}
