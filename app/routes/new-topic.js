@@ -9,7 +9,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
   model() {
     return this.store.createRecord('topic', {
-      author: this.get('sessionAccount.user')
+      user: this.get('sessionAccount.user')
     });
   }
 });
