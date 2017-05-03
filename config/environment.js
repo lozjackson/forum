@@ -24,8 +24,14 @@ module.exports = function(environment) {
   };
 
   ENV['ember-simple-auth'] = {
-    authorizer: 'authorizer:custom',
+    authorizer: 'authorizer:token',
     routeAfterAuthentication: '/'
+  };
+  ENV['ember-simple-auth-token'] = {
+    serverTokenEndpoint: '/login',
+    serverTokenRefreshEndpoint: '/token-refresh',
+    refreshAccessTokens: true,
+    refreshLeeway: 300 // Refresh the token 5 minutes (300s) before it expires.
   };
 
   if (environment === 'development') {
