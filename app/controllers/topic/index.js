@@ -8,5 +8,9 @@ export default Ember.Controller.extend({
 
   editPost(post) {
     this.transitionToRoute('topic.edit-post', post);
+  },
+
+  deleteRecord(model) {
+    model.destroyRecord().then(() => this.transitionToRoute('index'));
   }
 });
