@@ -12,9 +12,11 @@ export default Ember.Service.extend({
 
   loadCurrentUser() {
     return new Promise((resolve, reject) => {
-      const accountId = this.get('session.data.authenticated.userId');
-      if (!isEmpty(accountId)) {
-        return this.get('store').findRecord('user', accountId).then(account => {
+      const token = this.get('session.data.authenticated.token');
+      if (isEmpty(token)) { resolve(); }
+      const tokenData = this.getTokenData(token);
+      if (tokenData.user) {
+        return this.get('store').findRecord('user', tokenData.user).then(account => {
           this.set('user', account);
           resolve();
         }, reject);
@@ -22,5 +24,16 @@ export default Ember.Service.extend({
         resolve();
       }
     });
-  }
+  },
+
+  getTokenData(token) {
+    const payload = token.split('.')[1];
+    const tokenData = decodeURIComponent(window.escape(atob(payload)));
+
+    try {
+      return JSON.parse(tokenData);
+    } catch (e) {
+      return tokenData;
+    }
+  },
 });
