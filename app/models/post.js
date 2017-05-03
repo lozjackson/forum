@@ -4,17 +4,20 @@ import attr from 'ember-data/attr';
 import { belongsTo } from 'ember-data/relationships';
 
 const { computed } = Ember;
+const { alias } = computed;
 
 export default Model.extend({
-  created: 	attr('string', { defaultValue: function () {
+  createdAt: 	attr('string', { defaultValue: function () {
     return new Date().toISOString();
   }}),
-  modified: attr('string', { defaultValue: function () {
+  updatedAt: attr('string', { defaultValue: function () {
     return new Date().toISOString();
   }}),
   body: attr('string'),
-  author: belongsTo('user', { async: true }),
+  user: belongsTo('user', { async: true }),
   topic: belongsTo('topic', { async: true }),
+
+  author: alias('user'),
 
   edited: computed('created', 'modified', function () {
     return this.get('modified') > this.get('created');
