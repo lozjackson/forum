@@ -6,6 +6,11 @@ export default Component.extend({
   searchDelay: 300,
 	search: '',
 
+  init() {
+    this._super(...arguments);
+    this.set('search', this.get('value'))
+  },
+
   searchValueChanged() {
     const searchDelay = this.get('searchDelay') || 300;
     debounce(this, this.applySearch, searchDelay);
