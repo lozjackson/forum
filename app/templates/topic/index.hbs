@@ -1,7 +1,7 @@
 {{#if (can "edit topic" model)}}
   {{button-edit click=(action edit)}}
+  {{button-delete click=(confirm "Delete topic?" (action deleteRecord model))}}
 {{/if}}
-
 <h2>{{model.title}}</h2>
 
 <div class="topic-details">
