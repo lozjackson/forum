@@ -19,19 +19,17 @@ export default Model.extend({
   posts: hasMany('post', { async: true }),
 
   author: alias('user'),
-  created: alias('createdAt'),
-  modified: alias('updatedAt'),
 
-  postDates: mapBy('posts', 'created'),
+  postDates: mapBy('posts', 'createdAt'),
 
-  edited: computed('created', 'modified', function () {
-    return this.get('modified') > this.get('created');
+  edited: computed('createdAt', 'updatedAt', function () {
+    return this.get('updatedAt') > this.get('createdAt');
   }),
 
-  lastPost: computed('postDates', 'created', function () {
+  lastPost: computed('postDates', 'createdAt', function () {
     const postDates = this.get('postDates');
     if (!postDates.get('length')) {
-      return this.get('created');
+      return this.get('createdAt');
     }
     return postDates.sort().get('lastObject');
   })

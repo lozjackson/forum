@@ -19,7 +19,7 @@ export default Model.extend({
 
   author: alias('user'),
 
-  edited: computed('created', 'modified', function () {
-    return this.get('modified') > this.get('created');
+  edited: computed('createdAt', 'updatedAt', function () {
+    return this.get('updatedAt') > this.get('createdAt');
   })
 });
