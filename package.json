@@ -37,6 +37,7 @@
     "ember-crumbly": "^2.0.0-alpha.1",
     "ember-data": "^2.12.0",
     "ember-export-application-global": "^1.0.5",
+    "ember-infinity": "^0.2.8",
     "ember-load-initializers": "^0.6.0",
     "ember-moment": "^7.3.0",
     "ember-resolver": "^2.0.3",
