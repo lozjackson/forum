@@ -11,5 +11,5 @@ test('it exists', function(assert) {
 
 test('has correct authorizer', function(assert) {
   let adapter = this.subject();
-  assert.equal(adapter.authorizer, 'authorizer:oauth2');
+  assert.equal(adapter.authorizer, 'authorizer:token');
 });
