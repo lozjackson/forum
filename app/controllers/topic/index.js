@@ -1,8 +1,14 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
+const { computed: { readOnly }, inject: { controller }, Controller } = Ember;
 
-  edit() {
+export default Controller.extend({
+
+  topic: controller(),
+
+  replies: readOnly('model.meta.total-count'),
+
+  editTopic() {
     this.transitionToRoute('topic.edit');
   },
 
@@ -10,7 +16,11 @@ export default Ember.Controller.extend({
     this.transitionToRoute('topic.edit-post', post);
   },
 
-  deleteRecord(model) {
+  deleteTopic(model) {
     model.destroyRecord().then(() => this.transitionToRoute('index'));
+  },
+
+  deletePost(model) {
+    model.destroyRecord();
   }
 });
