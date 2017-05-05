@@ -26,7 +26,10 @@ test('submit', function(assert) {
   });
 
   let changeset = Ember.Object.create({
-    save: () => assert.ok(true)
+    save: () => {
+      assert.ok(true);
+      return { then: cb => cb() }
+    }
   });
   controller.submit(changeset);
 });

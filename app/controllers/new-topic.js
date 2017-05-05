@@ -9,8 +9,7 @@ export default Controller.extend({
   }),
 
   submit(changeset) {
-    changeset.save();
-    this.transitionToRoute('index');
+    changeset.save().then(() => this.transitionToRoute('index'));
   },
 
   cancel() {

@@ -4,30 +4,32 @@ import attr from 'ember-data/attr';
 import { belongsTo, hasMany } from 'ember-data/relationships';
 
 const { computed } = Ember;
-const { mapBy } = computed;
+const { alias, mapBy } = computed;
 
 export default Model.extend({
-  created: 	attr('string', { defaultValue: function () {
+  createdAt: 	attr('string', { defaultValue: function () {
     return new Date().toISOString();
   }}),
-  modified: attr('string', { defaultValue: function () {
+  updatedAt: attr('string', { defaultValue: function () {
     return new Date().toISOString();
   }}),
   title: attr('string'),
   body: attr('string'),
-  author: belongsTo('user', { async: true }),
+  user: belongsTo('user', { async: true }),
   posts: hasMany('post', { async: true }),
 
-  postDates: mapBy('posts', 'created'),
+  author: alias('user'),
 
-  edited: computed('created', 'modified', function () {
-    return this.get('modified') > this.get('created');
+  postDates: mapBy('posts', 'createdAt'),
+
+  edited: computed('createdAt', 'updatedAt', function () {
+    return this.get('updatedAt') > this.get('createdAt');
   }),
 
-  lastPost: computed('postDates', 'created', function () {
+  lastPost: computed('postDates', 'createdAt', function () {
     const postDates = this.get('postDates');
     if (!postDates.get('length')) {
-      return this.get('created');
+      return this.get('createdAt');
     }
     return postDates.sort().get('lastObject');
   })

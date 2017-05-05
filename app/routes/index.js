@@ -1,6 +1,9 @@
 import Ember from 'ember';
+import InfinityRoute from "ember-infinity/mixins/route";
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(InfinityRoute, {
+
+  totalPagesParam: 'meta.total-pages',
 
   queryParams:{
 		search:{
@@ -9,9 +12,9 @@ export default Ember.Route.extend({
 	},
 
   model(params) {
-    if (params && params.search) {
-      return this.store.query('topic', params);
+    if (params.search === '') {
+      delete params.search;
     }
-    return this.store.findAll('topic');
+    return this.infinityModel("topic", Object.assign(params, { perPage: 24, startingPage: 1 }));
   }
 });

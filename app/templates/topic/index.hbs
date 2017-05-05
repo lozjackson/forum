@@ -1,34 +1,37 @@
-{{#if (can "edit topic" model)}}
-  {{button-edit click=(action edit)}}
+{{#if (can "edit topic" topic.model)}}
+  {{button-edit click=(action editTopic)}}
+  {{button-delete click=(confirm "Delete topic?" (action deleteTopic topic.model))}}
 {{/if}}
-
-<h2>{{model.title}}</h2>
-
+{{uic-button text="Reply" action=(action transitionToRoute "topic.new-post")}}
+<h2>{{topic.model.title}}</h2>
 <div class="topic-details">
-  <p>Posted By: {{model.author.name}}</p>
-  <p>{{moment-format model.created "L h:mm a"}}</p>
-  <p>Replies: {{model.posts.length}}</p>
-  {{#if model.edited}}
-    <p>Edited: {{moment-format model.modified "L h:mm a"}}</p>
+  <p>Posted By: {{topic.model.author.name}}</p>
+  <p>{{moment-format topic.model.createdAt "DD/MM/YYYY h:mm a"}}</p>
+  <p>Replies: {{replies}}</p>
+  {{#if topic.model.edited}}
+    <p>Edited: {{moment-format topic.model.modified "DD/MM/YYYY h:mm a"}}</p>
   {{/if}}
 </div>
-<p class="topic-body">{{model.body}}</p>
+<p class="topic-body">{{topic.model.body}}</p>
 
-{{#each model.posts as |post|}}
+{{#each model as |post|}}
   <div class="post">
     <div class="post-details">
       <p>Posted By: {{post.author.name}}</p>
-      <p>{{moment-format post.created "L h:mm a"}}</p>
+      <p>{{moment-format post.createdAt "DD/MM/YYYY h:mm a"}}</p>
       {{#if (can "edit post" post)}}
         {{button-edit size=24 click=(action editPost post)}}
+        {{button-delete size=24 click=(confirm "Delete post?" (action deletePost post))}}
       {{/if}}
       {{#if post.edited}}
-        <p>Edited: {{moment-format post.modified "L h:mm a"}}</p>
+        <p>Edited: {{moment-format post.modified "DD/MM/YYYY h:mm a"}}</p>
       {{/if}}
     </div>
     <p class="post-body">{{post.body}}</p>
   </div>
 {{/each}}
+
+{{infinity-loader infinityModel=model loadedText="" loadingText="Loading..."}}
 
 {{uic-button text="Reply" action=(action transitionToRoute "topic.new-post")}}
 
