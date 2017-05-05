@@ -12,6 +12,9 @@ export default Ember.Route.extend(InfinityRoute, {
 	},
 
   model(params) {
+    if (params.search === '') {
+      delete params.search;
+    }
     return this.infinityModel("topic", Object.assign(params, { perPage: 24, startingPage: 1 }));
   }
 });
