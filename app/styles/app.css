@@ -15,6 +15,8 @@ html {
 body {
 	margin: 10px;
 	max-width: 1000px;
+	background: #fff;
+	padding: 20px;
 }
 @media (min-width:1020px) {
 	body {
@@ -33,6 +35,9 @@ button.login-button,
 	margin: auto;
 	margin-top: 10px;
 	margin-bottom: 20px;
+}
+.select-user > select {
+	width: 150px;
 }
 .search-bar > input{
 	width: 200px;
