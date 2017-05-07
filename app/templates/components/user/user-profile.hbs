@@ -1,0 +1,8 @@
+{{#uic-button-group}}
+  {{uic-button text="Cancel" action=(action cancel)}}
+  {{uic-button text="Save" action=(action submit model) disabled=(if (or model.isInvalid model.isPristine) true) class="blue"}}
+{{/uic-button-group}}
+
+{{uic-form-element label="Username" value=model.username}}
+{{uic-form-element label="Name" value=model.name}}
+{{uic-form-element label="Email" value=model.email}}

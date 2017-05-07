@@ -1,9 +1,8 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:user-profile', 'Unit | Route | user profile', {
+moduleFor('route:admin/users/index', 'Unit | Route | admin/users/index', {
   needs: [
-    'service:session',
-    'service:session-account'
+    'service:session'
   ]
 });
 

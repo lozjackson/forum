@@ -7,7 +7,8 @@ moduleFor('ability:post', 'Unit | Ability | post', {
   needs: [
     'model:user',
     'model:topic',
-    'model:post'
+    'model:post',
+    'model:role'
   ],
   beforeEach: function () {
     this.inject.service('store', { as: 'store' });
