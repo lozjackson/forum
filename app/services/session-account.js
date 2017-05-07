@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { computed: { readOnly }, inject: { service }, isEmpty, RSVP: { Promise } } = Ember;
+const { inject: { service }, isEmpty, RSVP: { Promise } } = Ember;
 
 export default Ember.Service.extend({
 
@@ -8,14 +8,13 @@ export default Ember.Service.extend({
   store: service(),
   user: null,
 
-  isAdmin: readOnly('session.data.authenticated.admin'),
-
   loadCurrentUser() {
     return new Promise((resolve, reject) => {
       const token = this.get('session.data.authenticated.token');
       if (isEmpty(token)) { resolve(); }
       const tokenData = this.getTokenData(token);
       if (tokenData.user) {
+        this.set('isAdmin', tokenData.admin);
         return this.get('store').findRecord('user', tokenData.user).then(account => {
           this.set('user', account);
           resolve();
