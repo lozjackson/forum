@@ -22,6 +22,7 @@ Router.map(function() {
     this.route('users', function() {
       this.route('user', { path: '/:user_id' }, function() {
         this.route('change-password');
+        this.route('add-role');
       });
     });
     this.route('roles', function() {
