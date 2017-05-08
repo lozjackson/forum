@@ -3,8 +3,11 @@ import Changeset from 'ember-changeset';
 import UserValidations from 'forum/validations/user';
 import lookupValidator from 'ember-changeset-validations';
 import getErrorResponse from 'forum/utils/get-error-response';
+import { strong, medium, weak } from 'forum/validators/password-strength';
 
 const { computed, inject: { service }, Component } = Ember;
+
+const passwordStrengthNames = ['none', 'weak', 'medium', 'strong'];
 
 function serialize(data, id) {
   return { id, type: 'users', attributes: {
@@ -22,6 +25,18 @@ export default Component.extend({
 
   changeset: computed(function () {
     return new Changeset(Ember.Object.create(), lookupValidator(UserValidations), UserValidations);
+  }),
+
+  passwordStrengthName: computed('passwordStrength', function () {
+    return passwordStrengthNames[this.get('passwordStrength')];
+  }),
+
+  passwordStrength: computed('changeset.password', function () {
+    const password = this.get('changeset.password');
+    if (strong.exec(password)) { return 3; }
+    if (medium.exec(password)) { return 2; }
+    if (weak.exec(password)) { return 1; }
+    return 0;
   }),
 
   savePassword() {
