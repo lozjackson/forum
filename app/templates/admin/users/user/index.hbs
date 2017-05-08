@@ -1,0 +1,28 @@
+{{user/user-profile
+  model=changeset
+  submit=(action submit)
+  cancel=(action cancel)}}
+
+{{#uic-form-element label="Disable Account"}}
+  {{uic-check-box checked=changeset.disabled class="toggle red"}}
+{{/uic-form-element}}
+
+{{#uic-form-element label="Administrator"}}
+  {{uic-check-box checked=admin class="toggle green" disabled=(if (is-equal model sessionAccount.user) true)}}
+{{/uic-form-element}}
+
+{{link-to "Change Password" "admin.users.user.change-password" tagName="button" class="uic-button"}}
+{{link-to "Add Role" "admin.users.user.add-role" tagName="button" class="uic-button"}}
+
+<ul>
+  {{#each roles as |role|}}
+    <li oncontextmenu={{open-context-menu "role-context-menu" role}}>{{role.name}}</li>
+  {{/each}}
+</ul>
+
+{{outlet}}
+
+{{#uic-context-menu id="role-context-menu" as |params|}}
+  <menuitem {{action openRole params.model}}>View role</menuitem>
+  <menuitem {{action removeRole params.model.name}}>Remove role</menuitem>
+{{/uic-context-menu}}
