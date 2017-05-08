@@ -7,6 +7,8 @@ export default Route.extend(AuthenticatedRouteMixin, {
 
   sessionAccount: service(),
 
+  breadCrumb: { title: 'User Profile' },
+
   model() {
     return this.get('sessionAccount.user');
   }
