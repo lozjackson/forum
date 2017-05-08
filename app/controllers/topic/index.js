@@ -1,9 +1,10 @@
 import Ember from 'ember';
-
-const { computed: { readOnly }, inject: { controller }, Controller } = Ember;
+import getErrorResponse from 'forum/utils/get-error-response';
+const { computed: { readOnly }, inject: { controller, service }, Controller } = Ember;
 
 export default Controller.extend({
 
+  dialog: service(),
   topic: controller(),
 
   replies: readOnly('model.meta.total-count'),
@@ -17,7 +18,10 @@ export default Controller.extend({
   },
 
   deleteTopic(model) {
-    model.destroyRecord().then(() => this.transitionToRoute('index'));
+    model.destroyRecord().then(
+      () => this.transitionToRoute('index'),
+      (error) => this.get('dialog').alert({ title: 'Error', body: getErrorResponse(error)})
+    );
   },
 
   deletePost(model) {
