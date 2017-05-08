@@ -3,9 +3,13 @@
 <div class="login-status">
   {{#if session.isAuthenticated}}
     {{#if sessionAccount.user.username}}
-        {{sessionAccount.user.username}}
+      {{link-to sessionAccount.user.username "user-profile"}}
+      {{if sessionAccount.isAdmin "(admin)"}}
     {{/if}}
     {{uic-button text="Logout" action="logout" class="small logout-button"}}
+    {{#if sessionAccount.isAdmin}}
+      {{link-to "Admin" "admin" tagName="button" class="small uic-button"}}
+    {{/if}}
   {{else}}
     {{#uic-button-group class="small"}}
       {{link-to "Login" "login" tagName="button" class="uic-button"}}

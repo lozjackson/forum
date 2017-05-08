@@ -13,8 +13,8 @@ export default {
   ],
   email: validateFormat({ type: 'email' }),
   password: [
-    validateLength({ min: 8 }),
-    validatePasswordStrength()
+    validateLength({ min: 4 }),
+    validatePasswordStrength({ strength: 'weak' })
   ],
   passwordConfirmation: validateConfirmation({ on: 'password' })
 };

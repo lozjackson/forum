@@ -1,0 +1,10 @@
+{{#uic-button-group}}
+  {{uic-button text="Cancel" action=(action cancel)}}
+  {{uic-button text="Save" action=(action submit model) disabled=(unless role true) class="blue"}}
+{{/uic-button-group}}
+
+<p>Add role to user: {{model.username}}</p>
+
+{{uic-form-element label="Name" value=role}}
+
+{{yield}}

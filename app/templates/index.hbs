@@ -1,6 +1,15 @@
+{{search-bar value=search}}
+
 {{uic-button text="New Topic" action=(action transitionToRoute "new-topic")}}
 
-{{search-bar value=search}}
+<label>
+  Moderators:
+</label>
+<ul class="moderators">
+  {{#each sortedModerators as |user|}}
+    <li>{{user.name}}</li>
+  {{/each}}
+</ul>
 
 <ul class="topic-list">
   {{#each sortedTopics as |topic|}}
