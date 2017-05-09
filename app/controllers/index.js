@@ -1,8 +1,9 @@
 import Ember from 'ember';
 
-const { computed, computed: { alias, sort }, inject: { service }, Controller } = Ember;
+const { computed, computed: { alias, sort }, inject: { controller, service }, Controller, RSVP: { Promise } } = Ember;
 
 export default Controller.extend({
+  application: controller(),
   sessionAccount: service(),
   search: '',
   queryParams: ['search'],
@@ -14,7 +15,7 @@ export default Controller.extend({
 
   moderators: alias('moderator.users'),
 
-  moderator: computed(function () {
-    return this.store.queryRecord('role', { name: 'moderator' });
+  moderator: computed('application.model.roles.@each.name', function () {
+    return this.get('application.model.roles').findBy('name', 'moderator');
   })
 });
