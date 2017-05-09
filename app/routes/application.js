@@ -10,6 +10,10 @@ export default Route.extend(ApplicationRouteMixin, {
     return this._loadCurrentUser();
   },
 
+  model() {
+    return { roles: this.store.findAll('role') };
+  },
+
   sessionAuthenticated() {
     this._super(...arguments);
     this._loadCurrentUser().catch(() => this.get('session').invalidate());
