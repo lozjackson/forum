@@ -1,22 +1,24 @@
 {{uic-modal-dialog}}
 <div id="modal-container"></div>
-<div class="login-status">
-  {{#if session.isAuthenticated}}
-    {{#if sessionAccount.user.username}}
-      {{link-to sessionAccount.user.username "user-profile"}}
-      {{if sessionAccount.isAdmin "(admin)"}}
+<header>
+  <div class="login-status">
+    {{#if session.isAuthenticated}}
+      {{#if sessionAccount.user.username}}
+        {{link-to sessionAccount.user.username "user-profile"}}
+        {{if sessionAccount.isAdmin "(admin)"}}
+      {{/if}}
+      {{uic-button text="Logout" action="logout" class="small logout-button"}}
+      {{#if sessionAccount.isAdmin}}
+        {{link-to "Admin" "admin" tagName="button" class="small uic-button"}}
+      {{/if}}
+    {{else}}
+      {{#uic-button-group class="small"}}
+        {{link-to "Login" "login" tagName="button" class="uic-button"}}
+        {{link-to "Register" "register" tagName="button" class="uic-button"}}
+      {{/uic-button-group}}
     {{/if}}
-    {{uic-button text="Logout" action="logout" class="small logout-button"}}
-    {{#if sessionAccount.isAdmin}}
-      {{link-to "Admin" "admin" tagName="button" class="small uic-button"}}
-    {{/if}}
-  {{else}}
-    {{#uic-button-group class="small"}}
-      {{link-to "Login" "login" tagName="button" class="uic-button"}}
-      {{link-to "Register" "register" tagName="button" class="uic-button"}}
-    {{/uic-button-group}}
-  {{/if}}
-</div>
+  </div>
+</header>
 
 {{link-to forumTitle "index" tagName="h1" id="forum-title"}}
 
